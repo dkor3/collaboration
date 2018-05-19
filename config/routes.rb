@@ -5,7 +5,9 @@ Rails.application.routes.draw do
 
   devise_for :hosts, path: 'hosts', controllers: { sessions: "hosts/sessions"}
   devise_for :users, path: 'users', controllers: { sessions: "users/sessions"}
-  resources :hosts, :only => [:show]
+  resources :hosts, :only => [:show] do
+    resources :comments, only: [:create]
+  end
   
   root 'home#index'
   get 'home/signin'
