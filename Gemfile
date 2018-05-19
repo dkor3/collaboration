@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'bootstrap', '~> 4.1.1'
+
 gem 'rails_db', '~> 1.6'
 
 gem 'devise'

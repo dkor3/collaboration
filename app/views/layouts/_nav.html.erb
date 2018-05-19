@@ -1,0 +1,16 @@
+  <nav class="d-flex justify-content-between navbar navbar-expand-lg">
+      <div class="navbar-brand">
+      <%= link_to image_tag("brand.png", class:  "brand"), current_host %>
+      </div>
+      <div>
+          <ul class="navbar-nav">
+          <% if current_host %>
+              <li class="nav-item"><%= link_to image_tag("on.png", class: "navitem"), destroy_host_session_path, method: :delete %></li>
+              <li class="nav-item"><%= link_to image_tag("mypage.png", class: "navitem"), current_host %></li>
+          <% elsif current_user%>
+              <li class="nav-item"><%= link_to image_tag("on.png", class: "navitem"), destroy_user_session_path, method: :delete %></li>
+          <% else %>
+              <li class="nav-item"><%= link_to image_tag("on.png", class: "navitem"), home_signin_path %></li>
+          <% end %> 
+      </div>
+  </nav>
