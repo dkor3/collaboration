@@ -10,7 +10,7 @@ gem 'bootstrap', '~> 4.1.1'
 gem 'rails_db', '~> 1.6'
 
 gem 'devise'
-gem 'devise-i18n'
+# gem 'devise-i18n'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.7'
