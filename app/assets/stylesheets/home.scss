@@ -1,3 +1,39 @@
-// Place all the styles related to the home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+body {
+    background-image: url("bg.png");
+    background-size: cover;
+}
+
+.para {
+    color: white;
+    text-align: justify;
+    margin-bottom: 20px;
+    text-size: 10px;
+}
+
+.container {
+    width: 50%;
+    align-items: center;
+}
+
+.logo {
+    width: 75%;
+    margin-bottom: 20px;
+}
+
+.logo2 {
+    width: 25%;
+    margin-bottom: 20px;
+}
+
+.gets {
+    width: 40%;
+}
+
+.brand {
+    width: 15%;
+}
+
+.navitem {
+    width: 20px;
+    margin-right: 20px;
+}
