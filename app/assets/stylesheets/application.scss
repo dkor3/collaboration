@@ -1,6 +1,11 @@
 
 @import 'bootstrap';
 
+body {
+    background-image: url("bg_default.jpg");
+    background-size: cover;
+}
+
 .navitem {
     width: 20px;
     margin-right: 20px;
@@ -9,4 +14,39 @@
 
 .brand {
     width: 15%;
+}
+
+.mpara {
+    color: #606060;
+    text-align: justify;
+    margin-bottom: 20px;
+    font-size: 12px;
+}
+
+.container {
+    width: 50%;
+    align-items: center;
+}
+
+.mlogo {
+    width: 70%;
+    margin-bottom: 20px;
+}
+
+.mlogo2 {
+    width: 20%;
+    margin-bottom: 20px;
+}
+
+.mgets {
+    width: 40%;
+}
+
+.mbrand {
+    width: 15%;
+}
+
+.mnavitem {
+    width: 20px;
+    margin-right: 20px;
 }
