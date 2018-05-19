@@ -1,35 +1,40 @@
-<p id="notice"><%= notice %></p>
+<body class="jpostbody">
+  <div class="jcontain">
+    <div class="jpostmar">
+      <p id="notice"><%= notice %></p>
 
-<h1>Posts</h1>
+      <h1 class="jposttitle">Today's Pick</h1>
+      <div class="jcards">
+        <% @posts.each do |x| %>
+          <div class="jcardd card text-white bg-secondary mb-3" style="max-width: 18rem;">
+            <div class="card-body">
+            <div class="card-header"><h5><%= x.title %></h5></div>
+            <p class="card-text">
+                <p class="jmembers">보관가능 기간</p>
+                <p class="jmembers"><%= x.start %> to <%= x.end %></p>
+                <p class="jmembers"><%= x.content %></p>
+                <p class="jmembers">
+                  <%if x.freez%>
+                    냉장고 있어요
+                  <%else%>
+                    냉장고 없어요
+                  <%end%>
+                </p>
+            </p>
+            <a href="posts/show/<%=x.id%>" class="btn btn-light">SHOW</a>
+          </div>
+        <%end%>
+      </div>
+    </div>
+      <%= link_to 'New Post', new_post_path %>
+    </div>
+    <div class="jsearching">
+      <%= form_tag(posts_path, method: :get) do %>
+        <%= date_field_tag :date, params[:date] %>
+        <%= check_box_tag :cold, checked = true %>
+        <%= submit_tag '날짜 확인', name: nil %>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @posts.each do |x| %>
-      <tr>
-        <td><%= x.title %></td>
-        <td><%= x.start %></td>
-        <td><%= x.end %></td>
-        <td><%= x.content %></td>
-        <td><%= x.freez %></td>
-        <td><a href="posts/show/<%=x.id%>">show</a></td>
-        <td><%= link_to 'Edit', edit_post_path(x) %></td>
-        <td><%= link_to 'Destroy', x, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<br>
-<%= link_to 'New Post', new_post_path %>
-
-<%= form_tag(posts_path, method: :get) do %>
-  <%= date_field_tag :date, params[:date] %>
-  <%= check_box_tag :cold, checked = true %>
-  <%= submit_tag '날짜 확인', name: nil %>
-
-<% end %>
+      <% end %>
+    </div>
+  </div>
+</body>

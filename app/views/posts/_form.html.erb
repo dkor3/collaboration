@@ -1,49 +1,51 @@
-<%= form_for(post) do |f| %>
-  <% if post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+<div class="container">
+  <%= form_for(post) do |f| %>
+    <% if post.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
-      <ul>
-      <% post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field form-group">
+      <%= f.label :title %>
+      <%= f.text_field :title, class: "form-control" %>
+    </div>
+
+    <div class="field form-group">
+      <%= f.label :start %>
+      <%= f.date_select :start, class: "form-control" %>
+    </div>
+
+    <div class="field form-group">
+      <%= f.label :end %>
+      <%= f.date_select :end, class: "form-control" %>
+    </div>
+  
+
+    <div class="field foom-group">
+      <%= f.label :content %>
+      <%= f.text_area :content, class: "form-control" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :freez %>
+      <%= f.check_box :freez %>
+    </div>
+
+
+    <div class="field">
+      <%=f.hidden_field :location, :id=>"loc2"%>
+    </div>
+
+    <div class="actions">
+      <%= f.submit %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
-
-   <div class="field">
-    <%= f.label :start %>
-    <%= f.date_select :start %>
-  </div>
-
-  <div class="field">
-    <%= f.label :end %>
-    <%= f.date_select :end %>
-  </div>
- 
-
-  <div class="field">
-    <%= f.label :content %>
-    <%= f.text_area :content %>
-  </div>
-
-  <div class="field">
-    <%= f.label :freez %>
-    <%= f.check_box :freez %>
-  </div>
-
-
-  <div class="field">
-    <%=f.hidden_field :location, :id=>"loc2"%>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
 

@@ -1,12 +1,51 @@
 
 @import 'bootstrap';
 
+body {
+    background-image: url("bg_default.jpg");
+    background-size: cover;
+}
+
 .navitem {
     width: 20px;
     margin-right: 20px;
 }
+.jcardd{
+    margin-right: 20px;
+}
+.jmembers{
+    font-family:'Nanum Gothic Coding', monospace;
+}
+.jcards{
+    display: flex;
+    flex-direction: row;
+    // justify-content: center;
+    align-items: center;
+}
+.jpostbody{
+    background-color: lightgray;
+}
 
+.jpostmar{
+    height: 700px;
+    width: 800px;
+    margin: 50px auto;
+}
 
+.jposttitle{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+}
+
+.jcontain{
+    display: flex;
+    align-items: center;
+}
+.jsearching{
+    height: 700px;
+    width: 400px;
+    margin: 50px auto;
+}
 .brand {
     width: 15%;
 }
@@ -18,4 +57,39 @@
 
 .ds{
     font-family: 'Nanum Pen Script', cursive;
+}
+
+.mpara {
+    color: #606060;
+    text-align: justify;
+    margin-bottom: 20px;
+    font-size: 12px;
+}
+
+.container {
+    width: 50%;
+    align-items: center;
+}
+
+.mlogo {
+    width: 70%;
+    margin-bottom: 20px;
+}
+
+.mlogo2 {
+    width: 20%;
+    margin-bottom: 20px;
+}
+
+.mgets {
+    width: 40%;
+}
+
+.mbrand {
+    width: 15%;
+}
+
+.mnavitem {
+    width: 20px;
+    margin-right: 20px;
 }
