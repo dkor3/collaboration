@@ -1,65 +1,103 @@
 <p id="notice"><%= notice %></p>
+<body class="container" style="background-image: url("3.jpg"); background-size: 100%;">
+<%# 전체 %>
+<div class="d-flex">
+  <%# 왼쪽 %>
+  <div class="card col-7 mr-3 px-5" style="height: 1500px;">
+      <%# 이미지 %>
+      <div class="p-3">
+      <%= image_tag("23.jpg",size:"500x500")%>
+      </div>
+      <%# 가게정보 %>
+      <div class="d-flex justify-content-between px-3 row ds" style="font-weight: bold; font-size: 40px; margin-bottom:50px;">
+        가게 이름: <%=@post.title%><br>
+        내용: <%=@post.content%><br>
+        시작: <%=@post.start%><br>
+        끝: <%=@post.end%><br>
+        냉장고 여부: 
+        <%if @post.freez%>
+            냉장고 있어요
+        <%else%>냉장고 없어요
+        <%end%>
+       </div>
+      
+       <div >
+  <input id="latlng" type="hidden" value="<%=@post.lat%>,<%=@post.lng%>">
+      <div id="map"></div>
+      <script>
+        function initMap() {
+          var input = document.getElementById('latlng').value;
+          var latlngStr = input.split(',', 2);
+          var latlng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};
 
-가게 이름: <%=@post.title%><br>
-내용: <%=@post.content%><br>
-시작: <%=@post.start%><br>
-끝: <%=@post.end%><br>
-냉장고 여부: 
-<%if @post.freez%>
-    냉장고 있어요
-<%else%>냉장고 없어요
-<%end%>
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
-<input id="latlng" type="hidden" value="<%=@post.lat%>,<%=@post.lng%>">
-    <div id="map"></div>
-    <script>
-      function initMap() {
-        var input = document.getElementById('latlng').value;
-        var latlngStr = input.split(',', 2);
-        var latlng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};
-
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 17,
-          center: latlng
-        });
-         var marker = new google.maps.Marker({
-            position: latlng,
-            map: map,
-            draggable: true,
-            animation: google.maps.Animation.DROP
-        }); 
-        marker.addListener('click', toggleBounce);
-        
-        var infowindow = new google.maps.InfoWindow;
-        var geocoder = new google.maps.Geocoder;
-        geocoder.geocode({'location': latlng}, function(results,status){
-            if (status === 'OK'){
-                if(results[1])
-                {
-                    infowindow.setContent(results[1].formatted_address);
-                    infowindow.open(map, marker);
-                } 
-                else {
-                window.alert('No results found');
-                }
-          } else {
-            window.alert('Geocoder failed due to: ' + status);
-          }
-        }); 
-      }
-
-      function toggleBounce() {
-        if (marker.getAnimation() !== null) {
-          marker.setAnimation(null);
-        } else {
-          marker.setAnimation(google.maps.Animation.BOUNCE);
+          var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 17,
+            center: latlng
+          });
+          var marker = new google.maps.Marker({
+              position: latlng,
+              map: map,
+              draggable: true,
+              animation: google.maps.Animation.DROP
+          }); 
+          marker.addListener('click', toggleBounce);
+          
+          var infowindow = new google.maps.InfoWindow;
+          var geocoder = new google.maps.Geocoder;
+          geocoder.geocode({'location': latlng}, function(results,status){
+              if (status === 'OK'){
+                  if(results[1])
+                  {
+                      infowindow.setContent(results[1].formatted_address);
+                      infowindow.open(map, marker);
+                  } 
+                  else {
+                  window.alert('No results found');
+                  }
+            } else {
+              window.alert('Geocoder failed due to: ' + status);
+            }
+          }); 
         }
-      }
-     
-    
-    </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFFp8RNTs5ZHW1T69I02AI1zQydY9RhHw&callback=initMap">
-    </script>
 
+        function toggleBounce() {
+          if (marker.getAnimation() !== null) {
+            marker.setAnimation(null);
+          } else {
+            marker.setAnimation(google.maps.Animation.BOUNCE);
+          }
+        }
+      
+      
+      </script>
+      <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFFp8RNTs5ZHW1T69I02AI1zQydY9RhHw&callback=initMap">
+      </script>
+</div>
+
+    </div>
+
+      <%# 예약버튼 %>
+      <div class="card col-7 p-3" style="height: 500px; font-size: 20px; padding-top:30px;">
+        <div style="font-size:150px;"><h><%=@post.title%></h>
+        </div>
+
+        <div style="font-size:30px;" class="ds"><h>내용: <%=@post.content%><br>
+          시작: <%=@post.start%><br>
+          끝: <%=@post.end%><br>
+          냉장고 여부: 
+          <%if @post.freez%>
+              냉장고 있어요
+          <%else%>냉장고 없어요
+          <%end%></h>
+        </div>
+
+        <%= link_to '예약하기', "/hosts/#{@post.writer}", class: "btn btn-warning"%>
+      </div>
+   
+    </div>
+  
+
+  
+
+</body>

@@ -39,6 +39,7 @@ class PostsController < ApplicationController
     arr=@post.location.split(',')
     @post.lat=(arr[0].split('('))[1].to_f
     @post.lng=arr[1].chop.to_f
+    @post.writer=current_host.id
 
     respond_to do |format|
       if @post.save
