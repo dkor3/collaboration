@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+ <%= link_to '예약하러가기', "/hosts/#{@post.writer }" %>
+
 가게 이름: <%=@post.title%><br>
 내용: <%=@post.content%><br>
 시작: <%=@post.start%><br>
