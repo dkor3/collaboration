@@ -5,8 +5,49 @@
     <%= c.content %>
 <% end%>
 
+<div>
 <%= form_for Comment.new, url:host_comments_path(@host.id) do |f| %>
     <%= f.label "댓글" %>
     <%= f.text_field :content %>
     <%= f.submit "작성" %>
 <% end %>
+</div>
+
+<% @host.books.each do |b| %>
+    <%= b.name %>
+    <%= b.email %>
+    <%= b.phone %>
+    <%= b.start %>
+    <%= b.end %>        
+    <%= b.content %>
+<% end%>
+
+<div>
+<%= form_for Book.new, url:host_books_path(@host.id) do |f| %>
+    <div>
+        <%= f.label "이름" %>
+        <%= f.text_field :name %>
+    </div>
+    <div>
+        <%= f.label "이메일" %>
+        <%= f.text_field :email %>
+    </div>
+        <div>
+        <%= f.label "연락처" %>
+        <%= f.text_field :phone %>
+    </div>
+        <div>
+        <%= f.label "맡기는시간" %>
+        <%= f.datetime_field :start %>
+    </div>
+        <div>
+        <%= f.label "찾는시간" %>
+        <%= f.datetime_field :end %>
+    </div>
+        <div>
+        <%= f.label "물건 설명" %>
+        <%= f.text_field :content %>
+    </div>
+    <%= f.submit "작성" %>
+<% end %>
+</div>

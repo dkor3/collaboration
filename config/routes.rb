@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   devise_for :users, path: 'users', controllers: { sessions: "users/sessions"}
   resources :hosts, :only => [:show] do
     resources :comments, only: [:create]
+    resources :books, only: [:create, :destroy]
   end
   
   root 'home#index'
